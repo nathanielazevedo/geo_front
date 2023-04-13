@@ -1,6 +1,8 @@
 import { Point } from "./utils";
 
 function Table({ points }: { points: Point[] }) {
+  const userIp = localStorage.getItem("userIp");
+
   return (
     <div
       style={{
@@ -27,19 +29,25 @@ function Table({ points }: { points: Point[] }) {
           </tr>
         </thead>
         <tbody>
-          {points.map((point: Point, i: number) => (
-            <tr key={i}>
-              <td>{point.ip_address}</td>
-              <td>{point.address_country}</td>
-              <td>{point.address_country_code}</td>
-              <td>{point.address_locality}</td>
-              <td>{point.address_region}</td>
-              <td>{point.latitude}</td>
-              <td>{point.longitude}</td>
-              <td>{point.postal_code}</td>
-              <td>{point.time_zone}</td>
-            </tr>
-          ))}
+          {points.map((point: Point, i: number) => {
+            let userPoint = false;
+            if (point.ip_address === userIp) {
+              userPoint = true;
+            }
+            return (
+              <tr key={i} style={{ color: userPoint ? "red" : "white" }}>
+                <td>{point?.ip_address}</td>
+                <td>{point?.address_country}</td>
+                <td>{point?.address_country_code}</td>
+                <td>{point?.address_locality}</td>
+                <td>{point?.address_region}</td>
+                <td>{point?.latitude}</td>
+                <td>{point?.longitude}</td>
+                <td>{point?.postal_code}</td>
+                <td>{point?.time_zone}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

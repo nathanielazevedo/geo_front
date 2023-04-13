@@ -10,12 +10,17 @@ const Point = ({
   point: PointType;
   setHoveredPoint: (point: PointType | null) => void;
 }) => {
-  console.log("POINT");
+  const userIp = localStorage.getItem("userIp");
+  let color = "yellow";
+  if (point.ip_address === userIp) {
+    color = "red";
+  }
   return (
     <Sphere
+      name={point.id}
       position={position}
       args={[0.01, 1, 1]}
-      material-color="yellow"
+      material-color={color}
       onPointerOver={() => setHoveredPoint(point)}
       onPointerOut={() => setHoveredPoint(null)}
     />

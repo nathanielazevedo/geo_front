@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Point } from "./utils";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Actions = ({
   points,
@@ -15,11 +17,22 @@ const Actions = ({
   const [disabled, setDisabled] = useState(false);
 
   const handleClick = async () => {
-    setDisabled(true);
-    await fetch("http://localhost:3000/").then(async (res) => {
-      const newPoint = (await res.json()) as Point;
-      setPoints([...points, newPoint]);
+    toast.info("Processing Click", {
+      position: "bottom-right",
+      autoClose: 2000,
     });
+    setDisabled(true);
+    await fetch("https://geo-back-cv35.onrender.com/")
+      .then(async (res) => {
+        if (!res.ok) throw new Error("Error Processing Click");
+        const newPoint = (await res.json()) as Point;
+        localStorage.setItem("userIp", newPoint.ip_address);
+        setPoints([...points, newPoint]);
+        toast.success("Click Added");
+      })
+      .catch((err) => {
+        toast.error("Error Processing Click");
+      });
     setDisabled(false);
   };
 

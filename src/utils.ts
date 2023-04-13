@@ -26,6 +26,7 @@ export const coordinatesToPosition = (
 };
 
 export const filterPoints = (points: Point[]) => {
+  if (points instanceof Array === false) return [];
   const ipHash = {} as Record<string, boolean>;
   return points.filter((point: Point) => {
     if (ipHash[point.ip_address]) return false;

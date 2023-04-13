@@ -1,58 +1,60 @@
-import { useEffect, useMemo, useRef } from "react";
-import { Circle, OrbitControls, Stars } from "@react-three/drei";
+import { useMemo, useRef } from "react";
+import { OrbitControls, Stars } from "@react-three/drei";
 import { coordinatesToPosition } from "./utils";
 import Earth from "./Earth";
 import Point from "./Point";
 import Clouds from "./Clouds";
-import { useThree } from "@react-three/fiber";
+import { Point as PointType } from "./utils";
 
 const Scene = ({
   points,
   setHoveredPoint,
 }: {
-  points: any;
-  setHoveredPoint: any;
+  points: PointType[];
+  setHoveredPoint: (point: PointType | null) => void;
 }) => {
   const earth = useMemo(() => <Earth />, []);
   const clouds = useMemo(() => <Clouds />, []);
-  const scene = useThree((state) => state.scene);
-  console.log("scene");
+  // const pointsRef = useRef<any>([]);
 
-  useEffect(() => {
-    if (points.length == 0) return;
-    const newPoint = points[points.length - 1];
-    const position = coordinatesToPosition(
-      [newPoint.latitude, newPoint.longitude],
-      2
-    );
-    const newPointJsx = (
-      <Point
-        key={newPoint.id}
-        point={newPoint}
-        position={position}
-        setHoveredPoint={setHoveredPoint}
-      />
-    ) as any;
-
-    scene.add(newPointJsx);
-  }, [points]);
-
-  const pointsMemo = useMemo(() => {
-    return points.map((point: any) => {
-      const position = coordinatesToPosition(
-        [point.latitude, point.longitude],
-        2
-      );
-      return (
-        <Point
-          key={point.id}
-          point={point}
-          position={position}
-          setHoveredPoint={setHoveredPoint}
-        />
-      );
-    });
-  }, []);
+  // const pointsMemo = useMemo(() => {
+  //   if (pointsRef.current.length > 0) {
+  //     console.log("here");
+  //     const newPoint = points[points.length - 1];
+  //     const position = coordinatesToPosition(
+  //       [newPoint.latitude, newPoint.longitude],
+  //       2
+  //     );
+  //     const newPointJsx = (
+  //       <Point
+  //         key={newPoint.id}
+  //         point={newPoint}
+  //         position={position}
+  //         setHoveredPoint={setHoveredPoint}
+  //       />
+  //     ) as any;
+  //     pointsRef.current.push(newPointJsx);
+  //     console.log(pointsRef.current);
+  //     return pointsRef.current;
+  //   } else {
+  //     const pointsJsx = points.map((point: PointType) => {
+  //       const position = coordinatesToPosition(
+  //         [point.latitude, point.longitude],
+  //         2
+  //       );
+  //       return (
+  //         <Point
+  //           key={point.id}
+  //           point={point}
+  //           position={position}
+  //           setHoveredPoint={setHoveredPoint}
+  //         />
+  //       );
+  //     });
+  //     pointsRef.current = pointsJsx;
+  //     return pointsJsx;
+  //   }
+  // }, [points]);
 
   const stars = useMemo(
     () => (
@@ -68,12 +70,26 @@ const Scene = ({
     ),
     []
   );
+
   return (
     <>
       {earth}
       {stars}
       {clouds}
-      {pointsMemo}
+      {points.map((point: PointType, index: number) => {
+        const position = coordinatesToPosition(
+          [point.latitude, point.longitude],
+          2
+        );
+        return (
+          <Point
+            key={point.id ?? index}
+            point={point}
+            position={position}
+            setHoveredPoint={setHoveredPoint}
+          />
+        );
+      })}
       <directionalLight intensity={0.3} />
       <ambientLight intensity={0.1} />
       <OrbitControls

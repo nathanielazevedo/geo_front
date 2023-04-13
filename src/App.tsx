@@ -3,14 +3,16 @@ import Actions from "./Actions";
 import HoverInfo from "./HoverInfo";
 import Table from "./Table";
 import Three from "./Three";
-import { filterPoints } from "./utils";
+import { filterPoints, Point } from "./utils";
 import "./App.css";
 
 const App = () => {
-  const [points, setPoints] = useState<any>(undefined);
+  const [points, setPoints] = useState<Point[] | undefined>([]);
   const filteredPoints = points ? filterPoints(points) : [];
   const [showTable, setShowTable] = useState(false);
-  const [hoveredPoint, setHoveredPoint] = useState<any>(null);
+  const [hoveredPoint, setHoveredPoint] = useState<Point | undefined>(
+    undefined
+  );
 
   const fetchPoints = async () => {
     await fetch("http://localhost:3000/points").then(async (res) => {
@@ -18,13 +20,13 @@ const App = () => {
     });
   };
 
-  useEffect(() => {
-    fetchPoints();
-  }, []);
+  // useEffect(() => {
+  //   fetchPoints();
+  // }, []);
 
   const scene = useMemo(
     () => <Three points={filteredPoints} setHoveredPoint={setHoveredPoint} />,
-    [points]
+    [filteredPoints.length]
   );
 
   return (

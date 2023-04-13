@@ -1,6 +1,6 @@
 import { useFrame } from "@react-three/fiber";
-import React, { useRef } from "react";
-import { TextureLoader } from "three";
+import React, { MutableRefObject, useRef } from "react";
+import { BufferGeometry, Material, Mesh, TextureLoader } from "three";
 import clouds from "./assets/clouds.png";
 
 const Clouds = () => {

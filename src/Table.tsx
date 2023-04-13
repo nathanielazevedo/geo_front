@@ -1,6 +1,6 @@
-import React from "react";
+import { Point } from "./utils";
 
-function Table({ points }: { points: any }) {
+function Table({ points }: { points: Point[] }) {
   return (
     <div
       style={{
@@ -27,7 +27,7 @@ function Table({ points }: { points: any }) {
           </tr>
         </thead>
         <tbody>
-          {points.map((point: any, i: number) => (
+          {points.map((point: Point, i: number) => (
             <tr key={i}>
               <td>{point.ip_address}</td>
               <td>{point.address_country}</td>

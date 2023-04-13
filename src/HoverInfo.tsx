@@ -1,6 +1,7 @@
 import React from "react";
+import { Point } from "./utils";
 
-function HoverInfo({ hoveredPoint }: { hoveredPoint: any }) {
+function HoverInfo({ hoveredPoint }: { hoveredPoint: Point }) {
   return (
     <div
       style={{

@@ -1,4 +1,5 @@
 import { Sphere } from "@react-three/drei";
+import { Point as PointType } from "./utils";
 
 const Point = ({
   position,
@@ -6,8 +7,8 @@ const Point = ({
   setHoveredPoint,
 }: {
   position: [number, number, number];
-  point: any;
-  setHoveredPoint: any;
+  point: PointType;
+  setHoveredPoint: (point: PointType | null) => void;
 }) => {
   console.log("POINT");
   return (

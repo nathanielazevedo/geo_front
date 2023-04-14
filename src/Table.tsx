@@ -12,6 +12,8 @@ function Table({ points }: { points: Point[] }) {
         padding: "5px",
         textAlign: "left",
         left: "15px",
+        maxHeight: "80vh",
+        overflowY: "scroll",
       }}
     >
       <table>

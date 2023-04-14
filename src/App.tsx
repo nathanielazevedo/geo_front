@@ -18,6 +18,7 @@ const App = () => {
   );
 
   const fetchPoints = async () => {
+    toast.info("Fetching Clicks - This may take a while...");
     await fetch("https://geo-back-cv35.onrender.com/points")
       .then(async (res) => {
         if (!res.ok) throw new Error("Error Fetching Clicks");

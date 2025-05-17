@@ -21,7 +21,7 @@ const App = () => {
     toast.info(
       "Fetching Clicks - Free servers take time to spin up. This may take a while..."
     );
-    await fetch("https://geo-back-cv35.onrender.com/points")
+    await fetch("https://geoback-production.up.railway.app/points")
       .then(async (res) => {
         if (!res.ok) throw new Error("Error Fetching Clicks");
         setPoints((await res.json()) ?? []);

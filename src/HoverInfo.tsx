@@ -15,10 +15,10 @@ function HoverInfo({ hoveredPoint }: { hoveredPoint: Point }) {
       }}
     >
       <h5>IP Address: &nbsp;{hoveredPoint?.ip_address}</h5>
-      <h5>Country: &nbsp;{hoveredPoint?.address_country}</h5>
-      <h5>Country Code: &nbsp;{hoveredPoint?.address_country_code}</h5>
-      <h5>Locality: &nbsp;{hoveredPoint?.address_locality}</h5>
-      <h5>Region: &nbsp;{hoveredPoint?.address_region}</h5>
+      <h5>Country: &nbsp;{hoveredPoint?.country}</h5>
+      <h5>Country Code: &nbsp;{hoveredPoint?.country_code}</h5>
+      <h5>Locality: &nbsp;{hoveredPoint?.locality}</h5>
+      <h5>Region: &nbsp;{hoveredPoint?.region}</h5>
       <h5>Latitude: &nbsp;{hoveredPoint?.latitude}</h5>
       <h5>Longitude: &nbsp;{hoveredPoint?.longitude}</h5>
       <h5>Postal Code: &nbsp;{hoveredPoint?.postal_code}</h5>

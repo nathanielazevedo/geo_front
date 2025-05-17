@@ -22,7 +22,7 @@ const Actions = ({
       autoClose: 2000,
     });
     setDisabled(true);
-    await fetch("https://geoback-production.up.railway.app.com/")
+    await fetch("https://geoback-production.up.railway.app/")
       .then(async (res) => {
         if (!res.ok) throw new Error("Error Processing Click");
         const newPoint = (await res.json()) as Point;

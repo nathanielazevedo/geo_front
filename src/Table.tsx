@@ -39,10 +39,10 @@ function Table({ points }: { points: Point[] }) {
             return (
               <tr key={i} style={{ color: userPoint ? "red" : "white" }}>
                 <td>{point?.ip_address}</td>
-                <td>{point?.address_country}</td>
-                <td>{point?.address_country_code}</td>
-                <td>{point?.address_locality}</td>
-                <td>{point?.address_region}</td>
+                <td>{point?.country}</td>
+                <td>{point?.country_code}</td>
+                <td>{point?.locality}</td>
+                <td>{point?.region}</td>
                 <td>{point?.latitude}</td>
                 <td>{point?.longitude}</td>
                 <td>{point?.postal_code}</td>

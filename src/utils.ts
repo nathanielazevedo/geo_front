@@ -1,9 +1,9 @@
 export type Point = {
   id: string;
-  address_country: string;
-  address_country_code: string;
-  address_locality: string;
-  address_region: string;
+  country: string;
+  country_code: string;
+  locality: string;
+  region: string;
   ip_address: string;
   latitude: number;
   longitude: number;

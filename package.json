@@ -1,27 +1,43 @@
 {
   "name": "react-globe-frequency",
-  "private": true,
   "version": "0.0.0",
+  "description": "A simple React component for rendering a 3D globe with points plotted on it",
+  "keywords": ["react", "globe", "3d", "three.js", "points", "map"],
+  "author": "Nathaniel Azevedo",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nathanielazevedo/geo_front.git"
+  },
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
   "dependencies": {
     "@react-three/drei": "^9.65.2",
     "@react-three/fiber": "^8.12.0",
     "@types/three": "^0.150.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-toastify": "^9.1.2",
-    "three": "^0.151.3",
-    "tippy.js": "^6.3.7"
+    "three": "^0.151.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-toastify": "^9.1.2",
+    "tippy.js": "^6.3.7",
     "typescript": "^4.9.3",
     "vite": "^4.2.0"
   }

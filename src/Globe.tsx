@@ -3,18 +3,18 @@ import React from "react";
 import Scene from "./Scene";
 import { Point } from "./utils";
 
-function Three({
+function Globe({
   points,
   setHoveredPoint,
 }: {
   points: Point[];
-  setHoveredPoint: (point: Point | null) => void;
+  setHoveredPoint?: (point: Point | null) => void;
 }) {
   return (
     <Canvas style={{ height: "100vh", width: "100vw" }}>
-      <Scene points={points} setHoveredPoint={setHoveredPoint} />
+      <Scene points={points} setHoveredPoint={setHoveredPoint || (() => {})} />
     </Canvas>
   );
 }
 
-export default Three;
+export default Globe;

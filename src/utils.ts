@@ -4,7 +4,7 @@ export type Point = {
   country_code: string;
   locality: string;
   region: string;
-  ip_address: string;
+  ip_address?: string;
   latitude: number;
   longitude: number;
   postal_code: string;
@@ -27,11 +27,11 @@ export const coordinatesToPosition = (
 
 export const filterPoints = (points: Point[]) => {
   if (points instanceof Array === false) return [];
-  const ipHash = {} as Record<string, boolean>;
+  const idHash = {} as Record<string, boolean>;
   return points.filter((point: Point) => {
-    if (ipHash[point.ip_address]) return false;
+    if (idHash[point.id]) return false;
     else {
-      ipHash[point.ip_address] = true;
+      idHash[point.id] = true;
       return true;
     }
   });

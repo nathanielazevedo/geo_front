@@ -6,12 +6,16 @@ import { Point } from "./utils";
 function Globe({
   points,
   setHoveredPoint,
+  style,
+  className,
 }: {
   points: Point[];
   setHoveredPoint?: (point: Point | null) => void;
+  style?: React.CSSProperties;
+  className?: string;
 }) {
   return (
-    <Canvas style={{ height: "100vh", width: "100vw" }}>
+    <Canvas style={style} className={className}>
       <Scene points={points} setHoveredPoint={setHoveredPoint || (() => {})} />
     </Canvas>
   );

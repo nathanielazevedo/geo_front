@@ -31,8 +31,11 @@ const points: Point[] = [
 
 function App() {
   return (
-    <div style={{ height: '100vh' }}>
-      <Globe points={points} />
+    <div>
+      <Globe 
+        points={points} 
+        style={{ height: '400px', width: '600px' }}
+      />
     </div>
   );
 }
@@ -42,6 +45,8 @@ function App() {
 
 - `points`: An array of `Point` objects to display on the globe.
 - `setHoveredPoint` (optional): A callback function that receives the hovered point or null.
+- `style` (optional): React.CSSProperties object for styling the canvas element.
+- `className` (optional): CSS class name for the canvas element.
 
 ## Point Type
 

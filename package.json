@@ -1,6 +1,6 @@
 {
   "name": "react-globe-frequency",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A simple React component for rendering a 3D globe with points plotted on it",
   "keywords": ["react", "globe", "3d", "three.js", "points", "map"],
   "author": "Nathaniel Azevedo",
